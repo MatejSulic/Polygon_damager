@@ -1,0 +1,9 @@
+# volba kolik vrcholu se tam bude umistovat na kruznici 
+# kolik procent bodu se ma pokazit 
+# jestli se maji pokazit nahodne nebo jen v casti (indexy)
+# jestli ma bejt kazeni stejne na vsech bodehc a nebo muzu ten posun v mezich menit 
+# musim dokazat stupnovat kazeni kontrolovane nejlepe v procentech 
+# pridat moznost plochy 
+# moznost doladeni velikosti podle obrazovky bitmapa 
+# napsat panu Malemu 
+
