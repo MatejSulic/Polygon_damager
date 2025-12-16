@@ -1,5 +1,5 @@
-from .point import Point
-from .shape import Shape
+from Models.point import Point
+from Models.shape import Shape
 
 def load_geometry(filepath):
     shapes = {}

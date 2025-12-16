@@ -1,19 +1,18 @@
 import numpy as np
-from geometry.centroid import symmetric_x_centroid
-from geometry.shape import Shape
-from geometry.point import Point
 
-def add_radial_noise(shape, max_damage=0.05, lock_edges=True):
+from Controllers.ShapeProcessor import get_centroid
+
+
+def add_radial_noise(shape, centroid, alpha=0.05, lock_edges=True):
     """
     Každý bod se posune směrem od centroidu o náhodnou hodnotu [-max_damage, max_damage].
     lock_edges: první a poslední bod zůstávají na místě
     """
-    new_shape = shape.clone(shape.name + "_radial")
+    new_shape = shape.copy( new_name=f"{shape.name}_radial_a{str(alpha)}")
 
-    cx, cy = symmetric_x_centroid(new_shape)
 
-    dx = np.array([p.x - cx for p in new_shape.points])
-    dy = np.array([p.y - cy for p in new_shape.points])
+    dx = np.array([p.x - centroid.x for p in new_shape.points])
+    dy = np.array([p.y - centroid.y for p in new_shape.points])
     dist = np.sqrt(dx**2 + dy**2)
     # ochrana proti nulové vzdálenosti
     dist[dist==0] = 1.0
@@ -23,7 +22,7 @@ def add_radial_noise(shape, max_damage=0.05, lock_edges=True):
     uy = dy / dist
 
     # náhodný posun podél směru
-    shift = np.random.uniform(-max_damage, max_damage, len(new_shape.points))
+    shift = np.random.uniform(-alpha, alpha, len(new_shape.points))
     if lock_edges:
         shift[0] = 0
         shift[-1] = 0
