@@ -17,16 +17,18 @@ def main():
 
     # 2) generování tvarů s radiálním šumem
     num_shapes = 5  # počet tvarů k vygenerován
-    # alpha = 0.2  # maximální posun bodu
-    # percentage = 0.5  # procento bodů k posunu
-    # GenerateRadialNoiseShapes(shape, alpha, num_shapes)
-
-    for alpha in [0.1, 0.2, 0.3]:
-        for percentage in [0.2, 0.5, 0.8]:
-            GenerateRadialNoiseShapes(shape, alpha,percentage, num_shapes)
-            GenerateRandomNoiseShapes(shape, alpha,percentage, num_shapes)
+    is_area = True
 
     
+    for area in [True, False]:
+
+        for alpha in [0.03, 0.05, 0.07, 0.1]:
+            for percentage in [0.2, 0.5]:
+
+
+                GenerateRadialNoiseShapes(shape, alpha, percentage, num_shapes, area)
+                GenerateRandomNoiseShapes(shape, alpha, percentage, num_shapes, area)
+        
 
 
 if __name__ == "__main__":

@@ -9,6 +9,9 @@ class Drawer:
 
     def draw_shape(self, shape, color="black", linewidth=2):
         self.ax.plot(shape.x, shape.y, color=color, linewidth=linewidth)
+    
+    def draw_shape_filled(self, shape, color="lightgray", alpha=1):
+        self.ax.fill(shape.x, shape.y, color=color, alpha=alpha)
 
     def draw_points(self, shape, color="red", size=5):
         self.ax.scatter(shape.x, shape.y, s=size, color=color)
