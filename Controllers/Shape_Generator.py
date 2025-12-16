@@ -9,14 +9,15 @@ from Models.shape import Shape
 
 def GenerateRadialNoiseShapes(shape: Shape, alpha: float, num_shapes: int):
 
+    other_half = mirror_y(shape)
+                
+    shape_before_transform = shape_connect(shape, other_half)
+                
+    centroid = get_centroid(shape_before_transform)
 
     for i in range(num_shapes):
         
-            other_half = mirror_y(shape)
             
-            shape_before_transform = shape_connect(shape, other_half)
-            
-            centroid = get_centroid(shape_before_transform)
             
             result = add_radial_noise(other_half, centroid, alpha)
 
@@ -38,15 +39,11 @@ def GenerateRadialNoiseShapes(shape: Shape, alpha: float, num_shapes: int):
 
 def GenerateRandomNoiseShapes(shape: Shape, alpha: float, num_shapes: int):
 
+    other_half = mirror_y(shape)    
 
     for i in range(num_shapes):
         
-            other_half = mirror_y(shape)
-            
-            shape_before_transform = shape_connect(shape, other_half)
-            
-            centroid = get_centroid(shape_before_transform)
-            
+    
             result = add_random_noise(other_half, alpha)
 
             shape_to_save = shape_connect(shape, result)
