@@ -23,8 +23,9 @@ def main():
 
     for alpha in [0.1, 0.2, 0.3]:
         for percentage in [0.2, 0.5, 0.8]:
-
+            GenerateRadialNoiseShapes(shape, alpha,percentage, num_shapes)
             GenerateRandomNoiseShapes(shape, alpha,percentage, num_shapes)
+
     
 
 
