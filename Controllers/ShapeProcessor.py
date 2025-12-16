@@ -94,7 +94,7 @@ def split_shape_by_percentage(shape: Shape, movement_pct: float) -> Tuple[Shape,
     # 4. Tvorba POHYBLIVÉHO tvaru
     # Body jsou vybírány z původního shape.points, kopírujeme je
     moving_points = [shape.points[i].copy() for i in moving_indices]
-    moving_shape = Shape(shape.name + "_moving", moving_points, contains_indices=moving_indices)
+    moving_shape = Shape(shape.name + "_per" + str(int(movement_pct * 100)), moving_points, contains_indices=moving_indices)
     
     # 5. Tvorba PEVNÉHO tvaru
     # Zde je klíčové, aby FIXED_POINTS zůstaly v PŮVODNÍM POŘADÍ, 
@@ -157,7 +157,7 @@ def shape_connect_by_index(
         raise RuntimeError("Kombinace selhala: Některé sloty zůstaly prázdné.")
 
     # 4. Vytvoření finálního tvaru
-    new_name = original_shape_name + "_recombined_2p"
+    new_name = original_shape_name
     final_shape = Shape(new_name, combined_points)
     
     return final_shape

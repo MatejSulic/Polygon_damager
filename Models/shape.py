@@ -34,8 +34,11 @@ class Shape:
         # 1. Zkopírujeme body HLUBOČE
         new_points = [p.copy() for p in self.points]
 
-        # 2. Určíme nové jméno
-        name_to_use = new_name if new_name is not None else self.name + "_copy"
+
+        if new_name is not None:
+            name_to_use = new_name
+        else:
+            name_to_use = self.name
 
         # 3. Vytvoříme NOVOU instanci Shape a zkopírujeme i indexy
         new_shape = Shape(name_to_use, new_points)
